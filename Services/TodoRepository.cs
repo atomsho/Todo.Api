@@ -1,22 +1,22 @@
+using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Todo.Api.Models;
+using Todo.Api.Controllers;
 
-namespace Todo.Api.Services{
-
+namespace Todo.Api.Services
+{
     public class TodoRepository : ITodoRepository
     {
-        [HttpGet]
-        private List<TodoItems> _items = new List<TodoItems>()
+        private List<TodoItem> _items = new List<TodoItem>()
         {
             new TodoItem{ Id = 1, Action= "Thing one.", IsDone =true},
             new TodoItem{ Id = 2, Action= "Thing two.", IsDone= false},
 
         };
 
-        public List<TodoItems> Items { get => _items; set => _items = value; }
-
         public IEnumerable<TodoItem> GetAllTodoItems(){
-            return Items;
+            return _items;
         }
     }
 }
